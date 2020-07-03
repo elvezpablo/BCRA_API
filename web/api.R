@@ -36,7 +36,7 @@ function(id=0, age=35, biopsies=0, hyperplasia=0, menstruation=16, first_birth=2
                              N_Rels=as.numeric(relatives),
                              Race =as.integer(race))
 
-    list(method="absolute.risk",data=jsonlite::unbox(absolute.risk(input_df, Raw_Ind, Avg_White)))
+    list(method=jsonlite::unbox("absolute.risk"),data=jsonlite::unbox(absolute.risk(input_df, Raw_Ind, Avg_White)))
 }
 #* Relative Risk 
 #* @param id
@@ -66,7 +66,7 @@ function(id=0, age=35, biopsies=0, hyperplasia=0, menstruation=16, first_birth=2
                              Race =as.integer(race))
 
 
-    list(method="relative.risk",data=jsonlite::unbox(relative.risk(input_df, Raw_Ind)))
+    list(method=jsonlite::unbox("relative.risk"),data=jsonlite::unbox(relative.risk(input_df, Raw_Ind)))
 }
 
 #* Check Summary
