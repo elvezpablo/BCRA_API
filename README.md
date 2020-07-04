@@ -22,6 +22,7 @@ This example runs the [plumber.io](https://www.rplumber.io/) package and loads a
 - [X] Make DockerFile
 - [] Deploy DockerFile
 - [] Set up HTTPS proxy
+- [] CI Script
 
 ## Reverse Proxy for HTTPS
 
