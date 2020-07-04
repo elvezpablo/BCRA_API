@@ -99,6 +99,6 @@ function(data="exampledata.rda", Raw_Ind=1) {
 #* @get /version
 #* @serializer unboxedJSON
 function() {
-    v <- "1.0"
-    list(version=jsonlite::unbox(v))
+    v<-read.csv("../version.txt", header = FALSE)    
+    list(version=jsonlite::unbox(v[[1]]))
 }

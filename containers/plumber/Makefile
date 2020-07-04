@@ -11,26 +11,32 @@ help: ## This help.
 
 .DEFAULT_GOAL := help
 
+# https://www.otaqui.com/blog/1421/using-the-contents-of-a-file-as-a-variable-in-a-makefile/index.html
+VERSION := $(shell cat app/version.txt)
+
 app-clean: ## Cleans out the app folder 
 	@echo "clear out app/ folder"
 	rm -rf app/*
 
-
+version: 	
+	@echo $(VERSION)
+	
 copy-src: app-clean ## Copy the latest source to the app foler
 	@echo "copy source files into app/ folder"
+	cp ../../version.txt app/
 	cp ../../run.sh app/
 	cp -r ../../R app/
 	cp -r ../../web app/
 
 build: copy-src ## Builds a new image 
 	@echo "build the image"
-	docker build -t bcra:1.0 .
+	docker build -t bcra:$(VERSION) .
 
 bash: ## Runs bask so you can try out the image
-	docker run -it bcra:1.0 bash
+	docker run -it bcra:$(VERSION) bash
 
 run: ## Runs the plumber server on port 8000
-	docker run -p 8000:8000 --name plumber bcra:1.0
+	docker run -d --rm -p 8000:8000 --name plumber bcra:$(VERSION)
 
 stop: ## Stops the image (not needed yet)
 	docker container kill plumber

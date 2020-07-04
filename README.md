@@ -18,6 +18,11 @@ This example runs the [plumber.io](https://www.rplumber.io/) package and loads a
 
 ## To Do
 
-1. Add CORS and test over web
-2. Make DockerFile
-3. Deploy DockerFile
+- [x] Add CORS and test over web
+- [X] Make DockerFile
+- [] Deploy DockerFile
+- [] Set up HTTPS proxy
+
+## Reverse Proxy for HTTPS
+
+- [Nginx Docker Reverse Proxy](https://www.freecodecamp.org/news/docker-nginx-letsencrypt-easy-secure-reverse-proxy-40165ba3aee2/)
