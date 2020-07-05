@@ -1,4 +1,4 @@
-
+library(BCRA)
 #* @filter cors
 cors <- function(res) {
     res$setHeader("Access-Control-Allow-Origin", "*")
@@ -18,9 +18,6 @@ cors <- function(res) {
 #* @param Avg_white
 #* @get /absolute.risk
 function(id=0, age=35, biopsies=0, hyperplasia=0, menstruation=16, first_birth=22, relatives=0, race=1, Raw_Ind=1, Avg_White=0) {        
-    source("../R/recode.check.R")
-    source("../R/relative.risk.R")
-    source("../R/absolute.risk.R")
     #attach(file.path("..","data",data))
     # Not sure how to switch the data input based on the 
     # data variable passed in
@@ -50,8 +47,6 @@ function(id=0, age=35, biopsies=0, hyperplasia=0, menstruation=16, first_birth=2
 #* @param Raw_Ind
 #* @get /relative.risk
 function(id=0, age=35, biopsies=0, hyperplasia=0, menstruation=16, first_birth=22, relatives=0, race=1, Raw_Ind=1) {    
-    source("../R/recode.check.R")        
-    source("../R/relative.risk.R")
     
     input_df <- data.frame(ID=id,
                              T1=as.numeric(age),
@@ -75,11 +70,8 @@ function(id=0, age=35, biopsies=0, hyperplasia=0, menstruation=16, first_birth=2
 #* @param Avg_white
 #* @get /check.summary
 function(data="exampledata.rda", Raw_Ind=1, Avg_White=0) {    
-    source("../R/recode.check.R")
-    source("../R/relative.risk.R")
-    source("../R/absolute.risk.R")
-    source("../R/check.summary.R")
-    attach(file.path("..","data",data))
+
+    # attach(file.path("..","data",data))
     check.summary(exampledata, Raw_Ind, Avg_White)
 }
 
@@ -88,11 +80,8 @@ function(data="exampledata.rda", Raw_Ind=1, Avg_White=0) {
 #* @param Raw_Ind 
 #* @get /risk.summary
 function(data="exampledata.rda", Raw_Ind=1) {    
-    source("../R/recode.check.R")
-    source("../R/relative.risk.R")
-    source("../R/absolute.risk.R")
-    source("../R/risk.summary.R")
-    attach(file.path("..","data",data))
+
+    # attach(file.path("..","data",data))
     risk.summary(exampledata, Raw_Ind)
 }
 

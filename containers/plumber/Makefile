@@ -28,17 +28,17 @@ copy-src: app-clean ## Copy the latest source to the app foler
 	cp -r ../../R app/
 	cp -r ../../web app/
 
-build: copy-src ## Builds a new image 
+build: copy-src ## ALWAYs build for run or after any changes
 	@echo "build the image"
 	docker build -t bcra:$(VERSION) .
 
-bash: ## Runs bask so you can try out the image
+bash: ## Runs bash in Docker must remove ENTRYPOINT in Dockerfile and rebuild first
 	docker run -it bcra:$(VERSION) bash
 
-run: ## Runs the plumber server on port 8000
-	docker run -d --rm -p 8000:8000 --name plumber bcra:$(VERSION)
+run: ## run plumber port 8000, remove -d to debug inside docker,  stop in new terminal
+	docker run --rm -d -p 8000:8000 --name plumber bcra:$(VERSION)
 
-stop: ## Stops the image (not needed yet)
+stop: ## Stops the image, run when using bash in new terminal
 	docker container kill plumber
 	
 clean: 
