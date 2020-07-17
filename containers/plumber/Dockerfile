@@ -12,9 +12,7 @@ WORKDIR /app
 
 RUN rm -rf ./*
 
-EXPOSE 8000
-
 COPY app .
 
-ENTRYPOINT ["./run.sh"]
+CMD ./run.sh $PORT
 
